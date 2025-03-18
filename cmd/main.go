@@ -34,7 +34,7 @@ func (p *SomePlugin) GrantAccess(ar *api.AccessRequest, app *argocd.Application)
 		p.sleepByAccessRequest[ar.GetName()] = time.Now()
 		return pending()
 	}
-	if time.Now().Before(addedAt.Add(time.Second * 30)) {
+	if time.Now().Before(addedAt.Add(time.Second * 15)) {
 		return pending()
 	}
 	if isMinuteEven() {
