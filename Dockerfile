@@ -1,9 +1,6 @@
 FROM golang:1.22 AS builder
 ARG TARGETOS
 ARG TARGETARCH
-ARG appName
-ARG appVersion=local
-ARG build
 
 WORKDIR /workspace
 # Copy the Go Modules manifests
@@ -26,14 +23,11 @@ RUN CGO_ENABLED=0 GOOS=${TARGETOS:-linux} GOARCH=${TARGETARCH} go build -a -o ./
 # PLUGIN SECTION
 
 # Base your plugin from the latest tag available of the
-# argocd-ephemeral-access-plugin image. It is recommended to pin
+# argocd-ephemeral-access-plugin image. This image ships
+# with the necessary user permissions as well as the script
+# to properly install the plugin. It is recommended to pin
 # a specific version instead of using 'latest'.
 FROM quay.io/argoprojlabs/argocd-ephemeral-access-plugin:latest
-
-LABEL image=docker \
-      app=${appName} \
-      build=${build} \
-      version=${appVersion}
 
 # The plugin binary should be copied in the /workspace which is the only directory
 # where the user nonroot (65532) has access to.
