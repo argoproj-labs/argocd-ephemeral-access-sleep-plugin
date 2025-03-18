@@ -8,8 +8,8 @@ When users request to have their access elevated it will:
 
 1. Initially reply the request as Pending
 1. After 30 seconds it will reply:
-  1. If the current minute is an even number it retuns Approved
-  1. If the current minute is on odd number it returns Denied
+  - If the current minute is an even number it retuns Approved
+  - If the current minute is on odd number it returns Denied
 
 ## Using it
 
