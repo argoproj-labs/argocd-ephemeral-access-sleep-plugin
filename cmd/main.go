@@ -53,21 +53,21 @@ func isMinuteEven() bool {
 func pending() (*plugin.GrantResponse, error) {
 	return &plugin.GrantResponse{
 		Status:  plugin.GrantStatusPending,
-		Message: "Pending access by the example plugin",
+		Message: "Pending access by the Sleep plugin",
 	}, nil
 }
 
 func granted() (*plugin.GrantResponse, error) {
 	return &plugin.GrantResponse{
 		Status:  plugin.GrantStatusGranted,
-		Message: "Granted access by the example plugin",
+		Message: "Granted access by the Sleep plugin",
 	}, nil
 }
 
 func denied() (*plugin.GrantResponse, error) {
 	return &plugin.GrantResponse{
 		Status:  plugin.GrantStatusDenied,
-		Message: "Denied access by the example plugin",
+		Message: "Denied access by the Sleep plugin",
 	}, nil
 }
 
@@ -76,7 +76,7 @@ func (p *SomePlugin) RevokeAccess(ar *api.AccessRequest, app *argocd.Application
 	delete(p.sleepByAccessRequest, ar.GetName())
 	return &plugin.RevokeResponse{
 		Status:  plugin.RevokeStatusRevoked,
-		Message: "Revoked access by the example plugin",
+		Message: "Revoked access by the Sleep plugin",
 	}, nil
 }
 
